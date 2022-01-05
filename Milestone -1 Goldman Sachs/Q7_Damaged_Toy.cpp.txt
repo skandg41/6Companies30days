@@ -1,0 +1,16 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// A Function to generate a unique OTP everytime
+
+
+// Driver Program to test above functions
+int main()
+{
+	// For different values each time we run the code
+    int m,n,k;
+    cin>>n>>m>>k;
+    cout<< (k+m-1)%n;
+    return(0);
+}

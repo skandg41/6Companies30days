@@ -1,0 +1,57 @@
+// { Driver Code Starts
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ull unsigned long long
+
+
+ // } Driver Code Ends
+//User function template for C++
+class Solution{
+public:	
+	// #define ull unsigned long long
+	/* Function to get the nth ugly number*/
+	ull getNthUglyNo(int n) {
+	    // code here
+	    vector<ull> ugly(n);
+	    ugly[0] =1;
+	    int u2=0,u3=0,u5=0;
+	    ull next_u2 =2,next_u3=3,next_u5=5,next_ugly=1;
+	    if(n<6) return n;
+	    for(int i=1;i<n;i++){
+	        next_ugly = min(next_u2,min(next_u3,next_u5));
+	        ugly[i] = next_ugly;
+	        if(next_ugly == next_u2){
+	            u2++;
+	            next_u2 = ugly[u2] * 2;
+	        }
+	        if(next_ugly == next_u3){
+	            u3++;
+	            next_u3 = ugly[u3] *3;
+	        }
+	        if(next_ugly == next_u5){
+	            u5++;
+	            next_u5 = ugly[u5] *5;
+	        }
+	        
+	    }
+	    return ugly[n-1];
+	}
+};
+
+// { Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        Solution ob;
+        auto ans = ob.getNthUglyNo(n);
+        cout << ans << "\n";
+    }
+    return 0;
+}
+  // } Driver Code Ends

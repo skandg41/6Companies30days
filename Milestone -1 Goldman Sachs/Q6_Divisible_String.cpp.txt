@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool isdivisible(string s,string divisor){
+        //cout<<"Currunt : "<<s<<" "<<divisor<<endl;
+        if(s.length() % divisor.length() !=0) return false;
+        for(int i=0;i<s.size();i += divisor.length()){
+            int j=0;
+            while(j<divisor.length()){
+          //      cout<<i+j<<" "<<j<<" "<<s[i+j]<<" "<<divisor[j]<<endl;
+                if(divisor[j] != s[i+j]) {
+                    
+                    return false;
+                }
+                j++;
+            }
+        }
+        return true;
+    }
+    string gcdOfStrings(string str1, string str2) {
+        //if(isdivisible(str1,str2)) return str2;
+       // if(isdivisible(str2,str1)) return str1;
+        if(str1[0]!=str2[0]) return "";
+        
+        string divisor ="",candidate="";
+        str1.length()<=str2.length() ? divisor = str1 : divisor = str2;
+        candidate = divisor;
+        for(int i=0 ; i<min(str1.length(),str2.length());i++){
+            if(str1[i] != str2[i]) {
+            //    cout<<"NOT ";
+                return "";
+            }
+            cout<<candidate<<endl;
+            if(isdivisible(str1,candidate) && isdivisible(str2,candidate)){
+                return candidate;
+            }
+            candidate.pop_back();
+        }
+        return "";
+    }
+};

@@ -1,0 +1,19 @@
+void print10minelements(List *head){
+    priority_queue<int,vector<int>(10),greater<int>> pq;
+    while(head){
+        if(pq.empty() || pq.size()<10) pq.push(head->val);
+        else {
+            if(pq.top() < head->val){
+                pq.pop();
+                pq.push(head->val);
+            }
+        }
+        head = head->next;
+    }
+    \\ print 10 largest values
+    while(!pq.empty()){
+        cout<<pq.top()<<" ";
+        pq.pop();
+    }
+    cout<<endl;
+}

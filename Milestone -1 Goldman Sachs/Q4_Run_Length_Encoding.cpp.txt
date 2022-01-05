@@ -1,0 +1,41 @@
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+string encode(string src);    
+ 
+int main() {
+	
+	int T;
+	cin>>T;
+	while(T--)
+	{
+		string str;
+		cin>>str;
+		
+		cout<<encode(str)<<endl;
+	}
+	return 0;
+}// } Driver Code Ends
+
+
+/*You are required to complete this function */
+
+string encode(string src)
+{     
+  //Your code here 
+  string encoded ="";
+  int st =0,end = src.length();
+  while(st<end){
+      int point = st,count=0;
+      char c = src[point];
+      while(c == src[point]){
+        count++;
+        point++;
+      } 
+      encoded += c +to_string(count);
+      st = point;
+  }
+  return encoded;
+}     
+ 
